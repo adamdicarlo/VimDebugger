@@ -447,7 +447,9 @@ class DBGPDebuggerUI:
                 maxLen["path"] = len(frame.localPathName)
             if not maxLen.has_key("where") or maxLen["where"] < len(frame.where):
                 maxLen["where"] = len(frame.where)
-            self.setSign(frame.localFileURI, frame.lineno, frame.depth)
+            # Causing flickering, removed per @mdhooge
+            # https://github.com/taxilian/VimDebugger/issues/5
+            # self.setSign(frame.localFileURI, frame.lineno, frame.depth)
 
         self.stackwin.setStack(stackList)
         self.setFrame(stackList[0])
