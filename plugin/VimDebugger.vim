@@ -82,7 +82,7 @@ function! g:__dbg_WatchFoldText()
   let foldlinecount = foldclosedend(v:foldstart) - foldclosed(v:foldstart) + 1
   let prefix = ""
   let fdnfo = prefix . string(v:foldlevel) . "," . string(foldlinecount) . "(+)"
-  let line = getline(v:foldstart) 
+  let line = getline(v:foldstart)
   let fillcharcount = winwd - len(line) - len(fdnfo)
   return line . repeat(" ",fillcharcount) . fdnfo
 endfunction
@@ -95,7 +95,7 @@ endfunction
 
 if !exists('g:debuggerTimeout')
   let g:debuggerTimeout = 10
-endif 
+endif
 
 if has('python')
   function DefPython()
@@ -630,7 +630,7 @@ class DBGPDebuggerWrapper:
         ctx = self.debugger.session.contextGet(0, self.depth)
         plist = []
         for property in ctx:
-            plist.append("$%s" % property.name )
+            plist.append("$%s" % property.name.lstrip('$'))
         return plist
 
     def updateWatch(self):
