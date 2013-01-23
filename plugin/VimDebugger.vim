@@ -36,7 +36,9 @@
 function s:VimDebuggerInit()
 
 if has('python')
-	if filereadable($VIMRUNTIME."/bundle/VimDebugger/plugin/VimDebugger.py")
+	if filereadable($HOME."/.janus/VimDebugger/plugin/VimDebugger.py")
+	  pyfile $HOME/.janus/VimDebugger/plugin/VimDebugger.py
+	elseif filereadable($VIMRUNTIME."/bundle/VimDebugger/plugin/VimDebugger.py")
 	  pyfile $VIMRUNTIME/bundle/VimDebugger/plugin/VimDebugger.py
 	elseif filereadable($HOME."/.vim/bundle/VimDebugger/plugin/VimDebugger.py")
 	  pyfile $HOME/.vim/bundle/VimDebugger/plugin/VimDebugger.py
